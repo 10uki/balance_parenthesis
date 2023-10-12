@@ -1,0 +1,47 @@
+package balance_parenthesis;
+
+import java.util.ArrayDeque;
+import java.util.Deque;
+
+//Given an expression string, write a program to examine whether the pairs and the orders of parenthesis 
+//{, }, (, ), [, ] are correct in expression. 
+
+public class Balance {
+
+	public static boolean Balance(String expression) {
+
+		Deque<Character> stack = new ArrayDeque<Character>();
+
+		for (int i = 0; i < expression.length(); i++) {
+			char x = expression.charAt(i);
+
+			if (x == '(' || x == '[' || x == '{') {
+				stack.push(x);
+				continue;
+			}
+
+			if (stack.isEmpty())
+				return false;
+
+			char check;
+			switch (x) {
+			case '}':
+				check = stack.pop();
+				if (check == '[' || check == '(')
+					return false;
+				break;
+			case ')':
+				check = stack.pop();
+				if (check == '{' || check == '[')
+					return false;
+				break;
+			case ']':
+				check = stack.pop();
+				if (check == '{' || check == '(')
+					return false;
+				break;
+			}	
+		}
+		return (stack.isEmpty());
+	}
+}
