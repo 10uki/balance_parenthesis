@@ -1,0 +1,22 @@
+package balance_parenthesis;
+
+import java.util.Scanner;
+
+public class Demo extends Balance {
+
+	public static void main(String[] args) {
+		
+		System.out.println("This program will test for order of paranthesis.");
+		System.out.println("Enter an expression:");
+
+		Scanner in = new Scanner(System.in);
+		String expression = in.nextLine();
+
+		if (Balance(expression))
+			System.out.println("Balanced.");
+		else
+			System.out.println("Not Balanced.");
+
+		in.close();
+	}
+}
